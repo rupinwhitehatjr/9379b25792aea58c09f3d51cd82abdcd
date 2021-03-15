@@ -2,10 +2,10 @@ var Engine = Matter.Engine,
     World = Matter.World,
     Events = Matter.Events,
     Bodies = Matter.Bodies; 
-var particles = [];
+var balls = [];
 var plinkos = [];
 var divisions =[];
-var particle;
+var ball;
 
 var divisionHeight=300;
 var score =0;
@@ -74,31 +74,31 @@ function draw() {
      plinkos[i].display();  
   }
  
-    if(particle!=null)
+    if(ball!=null)
     {
-       particle.display();
+       ball.display();
         
-        if (particle.body.position.y>760)
+        if (ball.body.position.y>760)
         {
-              if (particle.body.position.x < 300) 
+              if (ball.body.position.x < 300) 
               {
                   score=score+500;      
-                  particle=null;
+                  ball=null;
                   if ( count>= 5) gameState ="end";                          
               }
 
 
-              else if (particle.body.position.x < 600 && particle.body.position.x > 301 ) 
+              else if (ball.body.position.x < 600 && ball.body.position.x > 301 ) 
               {
                     score = score + 100;
-                    particle=null;
+                    ball=null;
                     if ( count>= 5) gameState ="end";
 
               }
-              else if (particle.body.position.x < 900 && particle.body.position.x > 601 )
+              else if (ball.body.position.x < 900 && ball.body.position.x > 601 )
               {
                     score = score + 200;
-                    particle=null;
+                    ball=null;
                     if ( count>= 5)  gameState ="end";
 
               }      
@@ -120,6 +120,6 @@ function mousePressed()
   if(gameState!=="end")
   {
       count++;
-     particle=new Particle(mouseX, 10, 10, 10); 
+     ball=new Ball(mouseX, 10, 10, 10); 
   }   
 }
